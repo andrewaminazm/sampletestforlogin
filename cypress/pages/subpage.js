@@ -8,6 +8,7 @@ class LoginPage {
     loginpagelogo: ()=> cy.findByRole('img', {  name: /logo/i}),
     usernameinput: ()=> cy.findByRole('textbox', {  name: /رقم الجوال \/ البريد الإلكتروني/i}),
     enterbutton :()=> cy.findByText(/تسجيل الدخول/i)
+    
 
   }
 
@@ -46,6 +47,7 @@ class LoginPage {
   }
 
   checkloginpageappear(){
+    cy.wait(5000)
     cy.url().should('eq', 'https://partners.toptalla.com/auth/sign-in')
     .then(() => {
                 // we are trying to return something
@@ -73,8 +75,15 @@ class LoginPage {
   enterdashboard(){
     this.elements.enterbutton().should('be.visible')
     this.elements.enterbutton().click()
-    
-
+    cy.get('.item-has-start-slot').click()
+    cy.get('._logOutItem_zsgaf_36').click()
+    cy.url().should('eq', 'https://partners.toptalla.com/auth/sign-in')
+    .then(() => {
+                // we are trying to return something
+                // from the .within callback,
+                // but it won't have any effect
+              cy.log('check url valid ')
+              })
   }
 }
 
