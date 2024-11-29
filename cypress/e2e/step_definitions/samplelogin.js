@@ -8,11 +8,7 @@ import {
   const subpage = require("../../pages/subpage");
   
   
-Given("i navigate to the url", () => {
-    subpage.checkurl()
-    subpage.checktitle()
 
-  });
   
 When("user be on  home page", () =>{
   
